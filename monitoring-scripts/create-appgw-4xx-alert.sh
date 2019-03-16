@@ -7,14 +7,14 @@ RESOURCE_GROUP="cpgateway"
 GATEWAY_NAME="cpgateway"
 
 # set a unique name for this query
-ALERT_NAME="Client_4xx_errors"
+ALERT_NAME="Client_4xx_errors"   #this value must be unique for every invocation of this script
 
-HTTP_STATUS="4xx"
+HTTP_STATUS="4xx"   #must correspond to a class of HTTP returns, i.e. 3xx, 4xx, 5xx
 
 # must create action group (AG) in the App Gateway resource group if it doesn't already exist...
 # or select an existing action group and assign the full name to the ACTION_GROUP variable.
 ACTION_GROUP="Application Gateway Administrators"
-ACTION_GROUP_RESOURCE="/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP/providers/microsoft.insights/actionGroups/$ACTION_GROUP"
+#ACTION_GROUP_RESOURCE="/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP/providers/microsoft.insights/actionGroups/$ACTION_GROUP"
 ACTION_GROUP_RESOURCE=$(az monitor action-group list --query "[?name==\`$ACTION_GROUP\`].{Id:id}" -o tsv)
 
 # choose a threshold value (# of occurrences) over a timespan (EVAL_WINDOW) evaluated at EVAL_FREQUENCY
@@ -29,9 +29,9 @@ az monitor metrics alert create  \
     --description "Client 4xx errors exceed threshold"  \
     --resource-group $RESOURCE_GROUP  \
     --scopes "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP/providers/Microsoft.Network/applicationGateways/$GATEWAY_NAME"  \
-    --condition "total ResponseStatus >= $THRESHOLD where HttpStatusGroup includes 4xx"  \
+    --condition "total ResponseStatus >= $THRESHOLD where HttpStatusGroup includes $HTTP_STATUS"  \
     --evaluation-frequency $EVAL_FREQUENCY  \
     --window-size $EVAL_WINDOW  \
     --action $ACTION_GROUP_RESOURCE
 
- DEFAULT_SUBSCRIPTION=$(az account list --query [?isDefault].{Id:id} -o tsv)
+
