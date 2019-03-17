@@ -1,15 +1,19 @@
+#  Be already logged in, or put a valid login command below
+# az login...
+
 #  Get the default subscription or look up one by name...
-SUBSCRIPTION=$(az account list --query [?isDefault].{Id:id} -o tsv)
-#SUBSCRIPTION=$(az account list --query [?SubscriptionName==<Your subscription name here>].{Id:id} -o tsv)
+SUBSCRIPTION_ID=$(az account list --query "[?isDefault].{Id:id} -o tsv)"
+#SUBSCRIPTION_ID=$(az account list --query "[?SubscriptionName==<Your subscription name here>].{Id:id} -o tsv)"
+#SUBSCRIPTION_ID=your-subid-here
 
 # must set the following values to match a current deployment
 RESOURCE_GROUP="cpgateway"
 GATEWAY_NAME="cpgateway"
 
-# set a unique name for this query
-ALERT_NAME="Client_4xx_errors"   #this value must be unique for every invocation of this script
-
 HTTP_STATUS="4xx"   #must correspond to a class of HTTP returns, i.e. 3xx, 4xx, 5xx
+
+# set a unique name for this query
+ALERT_NAME="Client_"$HTTP_STATUS"_errors_$($RANDOM)"   #this value must be unique for every invocation of this script
 
 # must create action group (AG) in the App Gateway resource group if it doesn't already exist...
 # or select an existing action group and assign the full name to the ACTION_GROUP variable.
