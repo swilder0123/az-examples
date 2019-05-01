@@ -1,5 +1,10 @@
 {
-    "EH_ADDRESS_URL": "your eventhub url here",
-    "EH_ACCESS_POLICY":  "your eventhub SAS policy",
-    "EH_ACCESS_KEY":  "your SAS key value"
+    "STORAGE_ACCOUNT_NAME": "storage account name, e.g., mydiag29392",
+    "STORAGE_ACCOUNT_SAS_TOKEN": "valid SAS token for the above storage account",
+    "EVENT_HUB_NAMESPACE": "eventhub namespace name, e.g., diaghub3932",
+    "EVENT_HUB_NAME:" "eventhub name, e.g., securityevents",
+    "EVENT_HUB_WRITE_ACCESS_POLICY":  "eventhub SAS policy, e.g., sendevents",
+    "EVENT_HUB_WRITE_ACCESS_KEY":  "SAS key value for the above policy",
+    "EVENT_HUB_READ_ACCESS_POLICY": "eventhub SAS read policy, e.g., readevents",
+    "EVENT_HUB_READ_ACCESS_KEY": "SAS key for the above policy"
 }
