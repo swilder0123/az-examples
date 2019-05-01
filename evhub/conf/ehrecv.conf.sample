@@ -1,0 +1,5 @@
+{
+    "EH_ADDRESS_URL": "your eventhub url here",
+    "EH_ACCESS_POLICY":  "your eventhub SAS policy",
+    "EH_ACCESS_KEY":  "your SAS key value"
+}

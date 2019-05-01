@@ -1,0 +1,34 @@
+{
+    "WadCfg": {
+        "DiagnosticMonitorConfiguration": {
+            "DiagnosticInfrastructureLogs": {
+                "scheduledTransferLogLevelFilter": "Warning"
+            },
+            "WindowsEventLog": {
+                "DataSource": [
+                    {
+                        "name": "Security!*"
+                    }
+                ],
+                "scheduledTransferPeriod": "PT5M",
+                "sinks": "HotPath"
+            },
+            "overallQuotaInMB": "4096"
+        },
+        "SinksConfig": {
+            "Sink": [
+                {
+                    "name": "HotPath",
+                    "EventHub": {
+                        "Url": "https://azlog68081947.servicebus.windows.net/securityevents",
+                        "SharedAccessKeyName": "sendevents",
+                        "usePublisherId": false
+                    }
+                }
+            ]
+        }
+    },
+    "storageAccount": {
+        "storageAccountName": "cpeastdiag737"
+    }
+}

@@ -1,0 +1,17 @@
+{
+  "storageAccountName": "cpeastdiag737",
+  "storageAccountSasToken": "sv=2018-03-28&ss=b&srt=sco&sp=wdac&se=2021-05-01T01:59:32Z&st=2019-04-30T17:59:32Z&spr=https&sig=%2BtSyIZnM10rpLtEucqGTlQDEr08jJW4n7J52yQkjiSk%3D",
+  "sinksConfig": {
+    "sink": [
+      {
+        "name": "SecurityJsonBlob",
+        "type": "JsonBlob"
+      },
+      {
+        "name": "SecurityEventHub",
+        "type": "EventHub",
+        "sasURL": "Endpoint=sb://azlog68081947.servicebus.windows.net/;SharedAccessKeyName=sendevents;SharedAccessKey=9S8qngF6msWtQs5PQYD1tAMZARCCgE6/piTYU3KdV2o=;EntityPath=securityevents"
+      }
+    ]
+  }
+}
