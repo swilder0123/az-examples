@@ -1,9 +1,9 @@
 {
-    "storageAccountName": "cpeastdiag737",
-    "storageAccountSasToken": "?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2021-04-25T23:36:37Z&st=2019-04-25T15:36:37Z&spr=https&sig=SzXfbjIu7i6fJiEo%2FHP0JmiiTz%2F7ONl1TrSQ53%2F9LQk%3D",
+    "storageAccountName": "__STORAGE_ACCOUNT_NAME__",
+    "storageAccountSasToken": "__STORAGE_ACCOUNT_SAS_TOKEN__",
     "EventHub": {
-        "Url": "https://azlog68081947.servicebus.windows.net/securityevents",
-        "SharedAccessKeyName": "sendevents",
-        "SharedAccessKey": "9S8qngF6msWtQs5PQYD1tAMZARCCgE6/piTYU3KdV2o="
+        "Url": "https://__EVENT_HUB_NAMESPACE__.servicebus.windows.net/__EVENT_HUB_NAME__",
+        "SharedAccessKeyName": "__SAS_KEY_NAME__",
+        "SharedAccessKey": "__SAS_KEY_VALUE__"
     }
 }
